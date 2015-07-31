@@ -25,15 +25,16 @@ var model = {
 	shipLength: 3,
 
 	generateShipLocations: function() {
-		
+		//use math.random to place locations on board
 	},
 
 	generateShip: function() {
+		//use math random to select whether its a horizontal or vertical ship
 
 	},
 
 	collision: function() {
-
+		// prevent collision of ships on placement
 	},
 
 	var ships = [{locations: [0, 0, 0], hits: ["", "", ""]},
@@ -78,6 +79,17 @@ var controller = {
 	guesses: 0
 
 	processGuesses: function(guess){
+		var location = parseGuess(guess);
+
+		if (location) {
+			this.guesses++;
+			var hit = model.fire(location);
+			if (hit && model.shipsSunk === model.numShips) {
+				view.displayMessage("You sank all my battleships, in " + this.guesses + "guesses");
+			}
+		}
+
+	  function parseGuess(guess) {
 		var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 
 		// Dealing with a bad user entry.
@@ -98,6 +110,8 @@ var controller = {
 			}
 		return null;
 			}
+		}
+	}
 		}
 
 	},
