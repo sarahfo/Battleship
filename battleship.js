@@ -25,12 +25,18 @@ var model = {
 	shipLength: 3,
 
 	generateShipLocations: function() {
-		//use math.random to place locations on board
+		var locations;
+		for (var i = 0, i < this.numShips; i++) {
+			do {
+				locations = this.generateShip();
+			} while (this.collision (locations));
+			this.ships[i].locations = locations;
+		}
 	},
 
 	generateShip: function() {
 		//use math random to select whether its a horizontal or vertical ship
-
+		
 	},
 
 	collision: function() {
