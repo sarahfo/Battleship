@@ -18,7 +18,7 @@ var view = {
 var model = {
 	boardSize: 7,
 
-	numShips: 3,
+	numShips: 4,
 
 	shipsSunk: 0,
 
