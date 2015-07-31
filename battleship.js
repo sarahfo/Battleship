@@ -80,6 +80,7 @@ var controller = {
 	processGuesses: function(guess){
 		var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 
+		// Dealing with a bad user entry.
 		if (guess === null || guess.length != 2) {
 			alert("Invalid Entry.  Please enter a letter and a number on the board."):;
 		} else {
@@ -87,6 +88,7 @@ var controller = {
 			var row = alphabet.indexOf(firstChar);
 			var column = guess.CharAt(1);
 
+			// Dealing with guess out of range
 			if (isNaN(row)) || if (isNaN(column)) {
 				alert("Your guess is not in the board range. Please try again!")
 			} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
@@ -94,7 +96,7 @@ var controller = {
 			} else {
 				return row + column;
 			}
-			
+		return null;
 			}
 		}
 
