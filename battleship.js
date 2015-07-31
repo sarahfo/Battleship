@@ -26,7 +26,7 @@ var model = {
 
 	generateShipLocations: function() {
 		var locations;
-		for (var i = 0, i < this.numShips; i++) {
+		for (var i = 0; i < this.numShips; i++) {
 			do {
 				locations = this.generateShip();
 			} while (this.collision (locations));
@@ -59,7 +59,7 @@ var model = {
 	collision: function() {
 		for (var i = 0; i < this.numShips; i++) {
 			var ship = model.ships[i];
-			for (var j = 0, j < locations.length; j++) {
+			for (var j = 0; j < locations.length; j++) {
 				if (ship.locations.indexOf(locations[j]) >= 0) {
 					return true;
 				}
@@ -68,11 +68,10 @@ var model = {
 		return false;
 	},
 
-	var ships = [{locations: [0, 0, 0], hits: ["", "", ""]},
-				{locations: [0, 0, 0], hits: ["", "", ""]},
-				{locations: [0, 0, 0], hits: ["", "", ""]}
+	ships: [ { locations: [0, 0, 0], hits: ["", "", ""] },
+				{ locations: [0, 0, 0], hits: ["", "", ""] },
+				{ locations: [0, 0, 0], hits: ["", "", ""] } ],
 
-	},
 
 	fire: function(guess) {
 		for (var i = 0; i <this.numShips; i++) {
@@ -109,7 +108,7 @@ var model = {
 var controller = {
 	guesses: 0
 
-	processGuesses: function(guess){
+	processGuesses: function(guess) {
 		var location = parseGuess(guess);
 
 		if (location) {
@@ -148,3 +147,13 @@ var controller = {
 	},
 
 };
+
+function init() {
+	var fireButton = document.getElementById("fireButton");
+	fireButton.onclick = handleFireButton;
+	var guessInput = document.getElementById("guessInput");
+	guessInput.onkeypress = handleKeyPress;
+
+	model.generateShipLocations();
+
+}
