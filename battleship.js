@@ -84,7 +84,18 @@ var controller = {
 			alert("Invalid Entry.  Please enter a letter and a number on the board."):;
 		} else {
 			var firstChar = guess.CharAt(0);
-			var row = alhpabet.indexOf(firstChar)
+			var row = alphabet.indexOf(firstChar);
+			var column = guess.CharAt(1);
+
+			if (isNaN(row)) || if (isNaN(column)) {
+				alert("Your guess is not in the board range. Please try again!")
+			} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+				alert("Your guess is out of board range.  Please try again!");
+			} else {
+				return row + column;
+			}
+			
+			}
 		}
 
 	},
