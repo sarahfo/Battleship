@@ -68,7 +68,7 @@ var model = {
 		return false;
 	},
 
-	ships: [ { locations: [0, 0, 0], hits: ["", "", ""] },
+	ships: [ { locations: [0, 0 , 0], hits: ["", "", ""] },
 				{ locations: [0, 0, 0], hits: ["", "", ""] },
 				{ locations: [0, 0, 0], hits: ["", "", ""] } ],
 
@@ -148,12 +148,25 @@ var controller = {
 
 };
 
+
 function init() {
 	var fireButton = document.getElementById("fireButton");
 	fireButton.onclick = handleFireButton;
+
+function handleFireButton() {
 	var guessInput = document.getElementById("guessInput");
 	guessInput.onkeypress = handleKeyPress;
+}
 
+function handleKeyPress (e) {
+	var fireButton = document.getElementById("fireButton");
+	if (e.keyCode === 13) {
+		fireButton.click() 
+	}
+}
 	model.generateShipLocations();
 
 }
+
+controller.processGuesses("A0");
+controller.processGuesses("A6");
