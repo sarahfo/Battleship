@@ -10,8 +10,9 @@
 			}
 			div#messageArea {
 				position: absolute;
-				top: 0px;
-				left: 0px;
+				/*margin: auto auto;*/
+				top: 50px;
+				left: 50px;
 				color: rgb(83, 175, 19);
 			}
 			table {
